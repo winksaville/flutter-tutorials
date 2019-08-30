@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_aware/ui/shared/app_colors.dart';
+import 'package:network_aware/ui/widgets/network_sensitive.dart';
 import 'package:network_aware/ui/widgets/stats_counter.dart';
 import 'package:network_aware/ui/widgets/watcher_toolbar.dart';
 
@@ -22,13 +23,15 @@ class HomeView extends StatelessWidget {
             context: context,
             height:
                 screenHeight(context, dividedBy: 2, decreasedBy: toolbarHeight),
-            child: StatsCounter(
-              size: screenHeight(context,
-                      dividedBy: 2, decreasedBy: toolbarHeight) -
-                  CounterMargins, // 60 margins
-              count: 13,
-              title: 'Errors',
-              titleColor: Colors.red,
+            child: NetworkSensitive(
+              child: StatsCounter(
+                size: screenHeight(context,
+                        dividedBy: 2, decreasedBy: toolbarHeight) -
+                    CounterMargins, // 60 margins
+                count: 13,
+                title: 'Errors',
+                titleColor: Colors.red,
+              ),
             ),
           ),
           _getHeightContainer(
@@ -39,12 +42,14 @@ class HomeView extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    StatsCounter(
-                      size: screenHeight(context,
-                              dividedBy: 3, decreasedBy: toolbarHeight) -
-                          CounterMargins,
-                      count: 55,
-                      title: 'Users',
+                    NetworkSensitive(
+                      child: StatsCounter(
+                        size: screenHeight(context,
+                                dividedBy: 3, decreasedBy: toolbarHeight) -
+                            CounterMargins,
+                        count: 55,
+                        title: 'Users',
+                      ),
                     ),
                     StatsCounter(
                       size: screenHeight(context,
